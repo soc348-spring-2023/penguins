@@ -239,9 +239,18 @@ Now continue working on your own for a while.
 The important thing is to work iteratively, always  checking your partial results.
 
 
-One concept you might need at the end is `attributes`.  You 
+One concept you might need at the end is `attributes`.  You can get the listing of attributes for a data frame (or any object in R)
+with `attributes(df)`.  
 
-Once you have gotten 
+You can remove, modify or add an attribute with the `attr()` function.
+
+setting a value (overwrites anything that is there already).
+
+attr(df , "attribute name") <- "newvalue"
+
+Deleting an attribute completely.
+attr(df , "attribute name") <- NULL
+
 
 ### Test code chunk.
 
