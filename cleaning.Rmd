@@ -47,16 +47,37 @@ to identical to penguins.   We can test if they
 are the same using the code `identical(penguins, penguins_new)`.
 You can also use `all.equal(penguins, penguins_new)`. 
 
+## First step
+
+Look closely at both data frames.  Make a list of things you will need to do to the raw data set to make it match the cleaned data. 
+Make the list as detailed as possible.  You may come up with more items later but get started before you do anything else.  Also you
+don't need to worry about the order of the steps.  And write in English, not code.
+
+## My list of tasks
+
+1. 
+2.
+3.
+4.
+5. 
+
+
+## Comparing data frames
+
+You can "eye ball" the two data frames to see some differences.  However, you can also use code to do the comparisons.
+Using code will generally help you spot differences that are not obvious, but are important.
+
 This blog post examines the comparison of data frames in much more detail.
 https://sharla.party/post/comparing-two-dfs/ (Worth reading and playing
-with'later.)
-
+with.)
 
 Towards the bottom of this document there is a code chunk called "test".
-Put your test code into that code chunk.
+This contains the test code mentioned above.
 That way you can periodically run it as you are working.   
 
 ###  What happens if you run that code chunk now?
+
+
 
 In the code chunk below create penguins_new from
 the penguins_raw data set using the assignment operator `<-`. 
@@ -66,11 +87,7 @@ the penguins_raw data set using the assignment operator `<-`.
 ```
 Now run your test code chunk again.
 
-Let's collaboratively create notes on what 
-needs to be done to clean up the pengins_raw data.  
-
-In the code chunk below use base functions to get
-a sense of the data.  (See slides)
+In the code chunk below use base functions to get a sense of the data.  (See slides)
 
 ### What are some things you notice?
 
@@ -80,22 +97,69 @@ a sense of the data.  (See slides)
 ```
 
 Another way to get a sense of a data set is to use
-the `skim()` function from the skimr package.
+the `skim()` function from the `skimr` package.
+Remember: How do you access a package? 
+
 Do that below.
 
 ```{r}
 
 ```
 
-### Do you notice anything new? 
+### Do you notice anything new? What?
+
+
 
 ## Start cleaning
 
-Now, working on cleaning the data.  Let's work both
-independently and collaboratively. 
+Now, working on cleaning the data.  Let's work both independently and collaboratively. 
 
-For cleaning data the tidyverse package dplyr is
-extremely useful.  It makes R work similarly to 
+### Useful functions
+Here are some functions you may want to use, you can learn more about these by using the help system. 
+Typing `?tolower` in the console would be an example of that.
+
+     Useful functions:
+     tolower(x) 
+      whatever you put inside gets changed to lower case (there is also toupper to go the other way)
+     
+     substr(x, start, stop)  
+     extract the substring of x staring with the “start” position and going to “stop” so substr(x, 1,3)  where x is “elephant” would extract “elep”.
+     
+     sub(pattern, replacement, x) 
+      lets you replace a specific string with another one. Usually we will want to add fixed = TRUE   
+     sub(pattern, replacement, x, fixed = TRUE) 
+     sub(“el”, “bell”, x, fixed = TRUE)  would give you bellephant.   
+     
+     gsub() lets you do the same as sub but with multiple instances
+     
+     as.factor(x)  is used to convert a variable to a factor.
+     
+     as.numeric(x) is used to convert a variable to numeric.
+     
+     as.integer(x) is used to convert a variable to an integer.
+     
+     relocate() is used to rearrange the order of the columns
+     
+     names()  names(df) gives the column names of a data frame (or vector) in the form of a vector.
+     names(df) <- vector_of_names
+     Lets us assign names to the columns of a data frame (or vector)
+     
+     typeof(df$(pick your column) is used when you want to check what data type is your column. For example is your column numeric, or a string type etc.(df  is where you include your dataset) 
+     
+     str_to_lower/upper()  is used to convert a string to lower case or upper case ( similar functions are ‘tolower()/to upper)
+     
+     Getting year from a date object
+     
+     format(x, "%Y") 
+     #  (note these are “curly quotes” and won’t work in R, you need to use "straight quotes".  Don’t copy and paste.  Also %Y is part of date formatting and means 4 digit year.  For two digit year you would use %y.  Same for month and day (%M, %m, %D, %d)
+     
+     Good website on working with strings in R
+     
+     https://github.com/Cghlewis/data-wrangling-functions/wiki/Strings
+
+### dplyr
+
+For cleaning data the tidyverse package dplyr is extremely useful.  It makes R work similarly to 
 SQL.
 
 Here are the main "dplyr verbs." (This nice
@@ -111,28 +175,26 @@ summary is copied from Alison Horst's dplyr tutorial.)
 - `count()`: quickly find counts for different groups
 - `case_when()`: like friendly if-else
 
-We'll also want to use various other functions for 
-specific tasks.
+We'll also want to use various other functions for specific tasks.
 
-Working below in well organized code chunks modify
-your penguins_new file.  (I have started you with
+## Getting to work!
+
+Working below in well organized code chunks modify  your penguins_new file.  (I have started you with
 a few examples.)
 
-Sometimes you may make a mistake. But by carefully
-tracking what you do you can always go back
-and run all of the code, starting at the top
-and get back to the point where you need to fix 
+Sometimes you may make a mistake. But by carefully tracking what you do you can always go back
+and run all of the code, starting at the top and get back to the point where you need to fix 
 things. 
 
 Also, dplyr is commonly used with the pipe operator.
-This is really useful, but we while we are working
-it is good to avoid chains that are too long. Long
+This is really useful, but we while we are working it is good to avoid chains that are too long. Long
 pipe chains are hard to debug.
 
-A piping example. Notice that penguins_new
-in the environment doesn't change. 
+A piping example. Notice that penguins_new in the environment doesn't change. 
 
-```{r}
+### What is this code doing? Can you add more to it to continue your work?
+
+```{r eval=FALSE}
 penguins_new |> 
      select(-studyName, -`Sample Number`)  
 ```
@@ -159,12 +221,9 @@ back to the object.
 penguins_new |> rename(newname = oldname)
 ```
 
-Don't worry about doing all of them at this 
-point because you can always go back and make
-changes.
+Don't worry about doing all of them at this point because you can always go back and make changes.
 
-The last example I'll include is mutate, which
-you can use to create new variables or modify
+The last example I'll include is mutate, which you can use to create new variables or modify
 existing variables.
 
 Let's say we want to create year, what do we
@@ -177,12 +236,18 @@ penguins_raw |>
 ```
 
 Now continue working on your own for a while. 
-The important thing is to work iteratively, always
-checking your partial results.
+The important thing is to work iteratively, always  checking your partial results.
+
+
+One concept you might need at the end is `attributes`.  You 
+
+Once you have gotten 
 
 ### Test code chunk.
 
 ```{r test}
+identical(penguins, penguins_new)
+all.equal(penguins, penguins_new)
 
 
 ```
@@ -190,7 +255,7 @@ checking your partial results.
 
 
 You will finish this up on your own and push to github. I'll help with that 
-next week, please come with your file ready to push.
+next week, please come with your file ready to push if you haven't done that on your own.
 
 As a special challenge, now add a new variable
 to your data set based on data from the raw data that
