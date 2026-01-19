@@ -239,7 +239,7 @@ need to do? How can we find a function to do
 what we want to do?
 
 ```{r}
-penguins_raw |>  
+penguins_new |>  
      mutate(year = WHAT, sex = WHAT)
 ```
 
