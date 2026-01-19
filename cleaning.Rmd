@@ -246,6 +246,8 @@ penguins_new |>
 Now continue working on your own for a while. 
 The important thing is to work iteratively, always  checking your partial results.
 
+Add your own code chunks (there is a green button for this in RStudio).
+
 
 One concept you might need at the end is `attributes`.  You can get the listing of attributes for a data frame (or any object in R)
 with `attributes(df)`.  
