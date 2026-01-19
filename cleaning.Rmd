@@ -27,7 +27,8 @@ use the first chunk to set any options you want
 for your whole document. 
 
 The code chunk below shows how to load palmerpenguins.
-Also load dplyr, tidyr, skimr, ggplot2, stringr.
+Using the `library()` function 
+load dplyr, tidyr, skimr, ggplot2, stringr.
 
 ```{r}
 library(palmerpenguins)
@@ -82,12 +83,16 @@ That way you can periodically run it as you are working.
 In the code chunk below create penguins_new from
 the penguins_raw data set using the assignment operator `<-`. 
 
+Remember from Hello Data Science that in R the assignment operator works like this 
+`name <- 3` ... it creates a new object called name that is the same as 3. 
+`newname <- name` would create a new object called newname that is also 3.
+
 ```{r}
 
 ```
-Now run your test code chunk again.
+Now go to the bottom and run your test code chunk again.
 
-In the code chunk below use base functions to get a sense of the data.  (See slides)
+In the code chunk below use base R functions to get a sense of the data.  (See slides for suggested functions)
 
 ### What are some things you notice?
 
@@ -118,20 +123,23 @@ Now, working on cleaning the data.  Let's work both independently and collaborat
 Here are some functions you may want to use, you can learn more about these by using the help system. 
 Typing `?tolower` in the console would be an example of that.
 
+This is a lot! Use it as a reference.
+
      Useful functions:
      tolower(x) 
       whatever you put inside gets changed to lower case (there is also toupper to go the other way)
      
      substr(x, start, stop)  
-     extract the substring of x staring with the “start” position and going to “stop” so substr(x, 1,3)  where x is “elephant” would extract “elep”.
+     extract the substring of x staring with the “start” position and going to “stop” so substr(x, 1,3)  where x is “elephant” would extract “ele”.
      
      sub(pattern, replacement, x) 
       lets you replace a specific string with another one. Usually we will want to add fixed = TRUE   
      sub(pattern, replacement, x, fixed = TRUE) 
      sub(“el”, “bell”, x, fixed = TRUE)  would give you bellephant.   
      
-     gsub() lets you do the same as sub but with multiple instances
-     
+     gsub() lets you do the same as sub but with multiple instances of the string.
+     gsub("e", "bell", "elephant", fixed = TRUE)  gives you "belllbellphant".
+
      as.factor(x)  is used to convert a variable to a factor.
      
      as.numeric(x) is used to convert a variable to numeric.
