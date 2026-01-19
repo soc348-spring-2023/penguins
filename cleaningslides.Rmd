@@ -34,7 +34,7 @@ Keep updating those as we go.
 
 Just staring won't get us far.  
 
-Three base functions we can use to descibe a file:
+Four base functions we can use to descibe a file:
 
 `nrow()`, `length()`, `names()`, `str()`. 
 
