@@ -249,6 +249,8 @@ The important thing is to work iteratively, always  checking your partial result
 Add your own code chunks (there is a green button for this in RStudio).
 
 
+
+
 One concept you might need at the end is `attributes`.  You can get the listing of attributes for a data frame (or any object in R)
 with `attributes(df)`.  
 
@@ -262,23 +264,85 @@ Deleting an attribute completely.
 attr(df , "attribute name") <- NULL
 
 
-### Test code chunk.
+### Test code chunks
 
-```{r test}
+ There are two basic ways  to compare objects in R.
+
+`identical()` is the tougher test.  
+> "The safe and reliable way to test two objects for being exactly equal. It returns TRUE in this case, FALSE in every other case."
+But it doesn't give you any information about _why_ it is fales.
+
+```{r test1}
 identical(penguins, penguins_new)
-all.equal(penguins, penguins_new)
+```
 
+`all.equal()` isn't as strict but gives us more information.  We can tell it to ignore certain aspects of the objects.
+
+```{r test2}
+
+all.equal(penguins, penguins_new, , check.attributes = FALSE)
 
 ```
 
 
+## Attributes
 
-You will finish this up on your own and push to github. I'll help with that 
+We can make the compariso more strict by changing check.attributes to TRUE.
+
+You can think of attributes as information about an R object.   
+
+You can get the listing of attributes for a data frame (or any object in R)
+with `attributes(df)`.  
+
+The next code chunk shows how to get the list of attributes from 
+penguins_new and assign it to an object.  
+
+Add code to get the attributes for for penguins, list them out and then list out just their names. 
+
+```{r}
+attributes_new <- attributes(penguin_new)
+attributes_new
+names(attributes_new)
+
+
+
+```
+
+What do you notice? 
+
+Are there any attributes in penguins that are not in penguins_new?  
+
+Are there any attributes in penguins_new that are not in penguins? 
+
+
+
+
+You can remove, modify or add an attribute with the `attr()` function.
+
+setting a value (overwrites anything that is there already).
+
+attr(df , "attribute name") <- "newvalue"
+
+Deleting an attribute completely.
+attr(df , "attribute name") <- NULL
+
+In the code chunk below, use the `attr()` function to modify the attributes in penguins_new.
+
+```{r}
+
+
+```
+
+```{r test3}
+
+all.equal(penguins, penguins_new, , check.attributes = TRUE)
+
+```
+
+You will finish this up on your own and push to Github. I'll help with that 
 next week, please come with your file ready to push if you haven't done that on your own.
-
-As a special challenge, now add a new variable
-to your data set based on data from the raw data that
-is not currently included. 
+But please at least try! And don't worry if the push shows an error! The push lets me 
+help you! 
 
 
 
