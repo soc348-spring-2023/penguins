@@ -5,7 +5,6 @@ In this repository we will work on:
 - getting totally comfortable with R.
 - practice reproducible research.
 - cleaning data.
-- understanding ordinary least squares regression.
 
 Of course, we will also be using github.
 
@@ -15,8 +14,7 @@ Then create a new project "from version control" in R studio, checking out the c
 
 If you have not done so, you will need to create a
 PAT (personal access token) for github. You can 
-f0llow the instructions here: 
+f0llow the instructions in your github set up repository.
 
-https://usethis.r-lib.org/articles/git-credentials.html
 
 
